@@ -1,0 +1,50 @@
+
+<%- include('partials/header') %>
+
+<div class="p-5 mb-4 bg-light rounded-3">
+    <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold">Lista de Contactos</h1>
+        <p class="col-md-8 fs-4">Aquí puedes ver, editar y eliminar los contactos de tu agenda.</p>
+        <a href="/crear" class="btn btn-primary btn-lg">Agregar Nuevo Contacto</a>
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-striped table-hover table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Fecha Nacimiento</th>
+                <th>Dirección</th>
+                <th>Celular</th>
+                <th>Correo</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if (contactos && contactos.length > 0) { %>
+                <% contactos.forEach(contacto => { %>
+                    <tr>
+                        <td><%= contacto.nombres %></td>
+                        <td><%= contacto.apellidos %></td>
+                        <td><%= contacto.fecha_nacimiento ? new Date(contacto.fecha_nacimiento).toLocaleDateString() : 'N/A' %></td>
+                        <td><%= contacto.direccion %></td>
+                        <td><%= contacto.celular %></td>
+                        <td><%= contacto.correo %></td>
+                        <td>
+                            <a href="/editar/<%= contacto.id %>" class="btn btn-sm btn-warning">Editar</a>
+                            <a href="/eliminar/<%= contacto.id %>" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de que quieres eliminar este contacto?');">Eliminar</a>
+                        </td>
+                    </tr>
+                <% }) %>
+            <% } else { %>
+                <tr>
+                    <td colspan="7" class="text-center">No hay contactos para mostrar.</td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+</div>
+
+<%- include('partials/footer') %>

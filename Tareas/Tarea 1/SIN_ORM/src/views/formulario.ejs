@@ -1,0 +1,51 @@
+
+<%- include('partials/header') %>
+
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <div class="card">
+            <div class="card-header bg-dark text-white">
+                <h3><%= esEdicion ? 'Editar Contacto' : 'Crear Nuevo Contacto' %></h3>
+            </div>
+            <div class="card-body">
+                <form action="<%= esEdicion ? '/editar/' + contacto.id : '/crear' %>" method="POST">
+                    
+                    <div class="mb-3">
+                        <label for="nombres" class="form-label">Nombres:</label>
+                        <input type="text" class="form-control" id="nombres" name="nombres" value="<%= contacto ? contacto.nombres : '' %>" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="apellidos" class="form-label">Apellidos:</label>
+                        <input type="text" class="form-control" id="apellidos" name="apellidos" value="<%= contacto ? contacto.apellidos : '' %>" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="fecha_nacimiento" class="form-label">Fecha de Nacimiento:</label>
+                        <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" value="<%= contacto && contacto.fecha_nacimiento ? new Date(contacto.fecha_nacimiento).toISOString().split('T')[0] : '' %>">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="direccion" class="form-label">Dirección:</label>
+                        <input type="text" class="form-control" id="direccion" name="direccion" value="<%= contacto ? contacto.direccion : '' %>">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="celular" class="form-label">Celular:</label>
+                        <input type="tel" class="form-control" id="celular" name="celular" value="<%= contacto ? contacto.celular : '' %>">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="correo" class="form-label">Correo Electrónico:</label>
+                        <input type="email" class="form-control" id="correo" name="correo" value="<%= contacto ? contacto.correo : '' %>">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary"><%= esEdicion ? 'Actualizar' : 'Guardar' %></button>
+                    <a href="/" class="btn btn-secondary">Cancelar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer') %>
