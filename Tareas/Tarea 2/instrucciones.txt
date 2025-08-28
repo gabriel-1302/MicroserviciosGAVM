@@ -1,0 +1,45 @@
+# Pasos para levantar el entorno de la Agenda de Contactos con Docker
+
+## 1. Crear la red de Docker
+# Esta red permitirá que el contenedor de la aplicación se comunique con el contenedor de la base de datos.
+docker network create agenda-net
+
+## 2. Iniciar el contenedor de MongoDB
+# Este comando inicia un contenedor con la base de datos MongoDB.
+# -d: Ejecuta el contenedor en segundo plano.
+# --name mongo-db: Asigna el nombre "mongo-db" al contenedor.
+# --network agenda-net: Conecta el contenedor a la red "agenda-net".
+# -p 27017:27017: Mapea el puerto 27017 del contenedor al puerto 27017 de tu máquina.
+# mongo: Es el nombre de la imagen de Docker que se utilizará.
+docker run -d --name mongo-db --network agenda-net -p 27017:27017 mongo
+
+## 3. Construir la imagen de la aplicación
+# Este comando construye la imagen de Docker para tu aplicación Node.js.
+# -t tarea-2-app: Asigna el nombre "tarea-2-app" a la imagen.
+# .: Indica que el Dockerfile se encuentra en el directorio actual.
+docker build -t tarea-2-app .
+
+## 4. Iniciar el contenedor de la aplicación
+# Este comando inicia el contenedor de tu aplicación.
+# -d: Ejecuta el contenedor en segundo plano.
+# --name tarea-2-app: Asigna el nombre "tarea-2-app" al contenedor.
+# --network agenda-net: Conecta el contenedor a la red "agenda-net".
+# -p 3000:3000: Mapea el puerto 3000 del contenedor al puerto 3000 de tu máquina.
+docker run -d --name tarea-2-app --network agenda-net -p 3000:3000 tarea-2-app
+
+## 5. (Opcional) Ver los logs de los contenedores 
+# Para ver los logs de la aplicación:
+docker logs tarea-2-app
+
+# Para ver los logs de la base de datos:
+docker logs mongo-db
+
+## 6. (Opcional) Detener y eliminar los contenedores y la red
+# Para detener los contenedores:
+docker stop tarea-2-app mongo-db
+
+# Para eliminar los contenedores:
+docker rm tarea-2-app mongo-db
+
+# Para eliminar la red:
+docker network rm agenda-net
