@@ -1,8 +1,7 @@
 const { MongoClient } = require('mongodb');
-require('dotenv').config();
 
-const uri = process.env.MONGO_URI;
-const dbName = process.env.DB_NAME;
+const uri = 'mongodb://172.20.0.2:27017';
+const dbName = 'agendaDB';
 
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
