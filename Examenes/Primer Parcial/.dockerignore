@@ -1,0 +1,14 @@
+# Ignorar dependencias locales, ya que se instalarán en el contenedor
+node_modules
+
+# Ignorar archivos de entorno, se deben pasar al ejecutar el contenedor
+.env
+
+# Ignorar archivos de log
+npm-debug.log
+
+# Ignorar el propio Dockerfile y archivos de git
+Dockerfile
+.dockerignore
+.git
+.gitignore
