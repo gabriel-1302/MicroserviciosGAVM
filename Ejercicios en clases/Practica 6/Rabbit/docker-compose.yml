@@ -1,0 +1,44 @@
+services:
+  rabbitmq:
+    image: rabbitmq:latest
+    container_name: rabbitmq
+    pull_policy: never
+    restart: always
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - rabbit-net
+
+  producer:
+    image: producer-image
+    container_name: producer
+    pull_policy: never
+    restart: always
+    depends_on:
+      - rabbitmq
+    environment:
+      - RABBITMQ_URL=amqp://guest:guest@rabbitmq:5672
+      - QUEUE_NAME=email_queue
+      - PORT=3000
+    ports:
+      - "3000:3000"
+    networks:
+      - rabbit-net
+
+  consumer:
+    image: consumer-image
+    container_name: consumer
+    pull_policy: never
+    restart: always
+    depends_on:
+      - rabbitmq
+    environment:
+      - RABBITMQ_URL=amqp://guest:guest@rabbitmq:5672
+      - QUEUE_NAME=email_queue
+    networks:
+      - rabbit-net
+
+networks:
+  rabbit-net:
+    driver: bridge
