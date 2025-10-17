@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dashboard de Administración</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#592EF2",
+                        "dark-bg": "#141926",
+                        "light-gray": "#BFCAD9",
+                        "accent-green": "#29F280",
+                        "dark-green": "#24733F",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #141926;
+            background-image: radial-gradient(circle at top right, #592EF230, transparent 40%), radial-gradient(circle at bottom left, #29F28030, transparent 40%);
+        }
+        .glassmorphism-card {
+            background: rgba(191, 202, 217, 0.1);
+            -webkit-backdrop-filter: blur(15px);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(191, 202, 217, 0.2);
+        }
+    </style>
+</head>
+<body class="font-display">
+<div class="relative flex min-h-screen w-full flex-col items-center justify-center p-4">
+<div class="layout-container flex h-full w-full max-w-7xl grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap p-4 text-light-gray">
+<div class="flex items-center gap-4">
+<div class="size-8 text-primary">
+<svg fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M24 4C25.7818 14.2173 33.7827 22.2182 44 24C33.7827 25.7818 25.7818 33.7827 24 44C22.2182 33.7827 14.2173 25.7818 4 24C14.2173 22.2182 22.2182 14.2173 24 4Z"></path>
+</svg>
+</div>
+<h2 class="text-xl font-bold">Ticket Sales</h2>
+</div>
+<div class="hidden md:flex items-center gap-9">
+<a class="text-sm font-medium text-light-gray hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-sm font-medium text-light-gray/70 hover:text-primary transition-colors" href="#">Eventos</a>
+<a class="text-sm font-medium text-light-gray/70 hover:text-primary transition-colors" href="#">Usuarios</a>
+<a class="text-sm font-medium text-light-gray/70 hover:text-primary transition-colors" href="#">Ajustes</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full glassmorphism-card text-light-gray hover:bg-light-gray/20 transition-all">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="size-10 rounded-full bg-cover bg-center" data-alt="User avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDDfTl7bc10FzWFE_Fy_cqAHLNZ33OUlSkM4xkLS13Ky_ZRPN3bPnz3Vasxjng_mHEj-xeGu38JFCK5URHlOyNSVpyGB0-hFyFdtBLMw8KTfmpG6sw9ZM8IhY9Qn1YlJrIDQgPwsj1Dq6r8u7uwzYsXlWd2Ibvys6oOi-2PRirenxNMdPVBJmQCSkS56pdIbpgozrJkl8nl16IcXSYd5ofl_KwKBxNoBnEq5InKY5NqO-5hocjK-FbNnocXpZC4xuCO2OSpD2qBmaJx");'></div>
+</div>
+</header>
+<main class="flex-1 p-4">
+<div class="flex flex-wrap justify-between gap-3 mb-8">
+<div class="flex flex-col gap-3">
+<p class="text-light-gray text-4xl font-black leading-tight tracking-[-0.033em]">Dashboard de Administración</p>
+<p class="text-light-gray/80 text-base font-normal leading-normal">Descripción general de las métricas clave y las tendencias de ventas.</p>
+</div>
+</div>
+<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 mb-8">
+<div class="flex flex-col gap-2 rounded-xl p-6 glassmorphism-card hover:bg-light-gray/20 transition-all duration-300">
+<div class="flex items-center justify-between">
+<p class="text-light-gray text-base font-medium">Usuarios</p>
+<span class="material-symbols-outlined text-primary">group</span>
+</div>
+<p class="text-light-gray tracking-light text-4xl font-bold">1,234</p>
+<p class="text-accent-green text-base font-medium">+5.2%</p>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 glassmorphism-card hover:bg-light-gray/20 transition-all duration-300">
+<div class="flex items-center justify-between">
+<p class="text-light-gray text-base font-medium">Eventos</p>
+<span class="material-symbols-outlined text-primary">event</span>
+</div>
+<p class="text-light-gray tracking-light text-4xl font-bold">56</p>
+<p class="text-accent-green text-base font-medium">+12%</p>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 glassmorphism-card hover:bg-light-gray/20 transition-all duration-300">
+<div class="flex items-center justify-between">
+<p class="text-light-gray text-base font-medium">Ventas</p>
+<span class="material-symbols-outlined text-primary">shopping_cart</span>
+</div>
+<p class="text-light-gray tracking-light text-4xl font-bold">7,890</p>
+<p class="text-accent-green text-base font-medium">+8.7%</p>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 glassmorphism-card hover:bg-light-gray/20 transition-all duration-300">
+<div class="flex items-center justify-between">
+<p class="text-light-gray text-base font-medium">Ingresos</p>
+<span class="material-symbols-outlined text-primary">payments</span>
+</div>
+<p class="text-light-gray tracking-light text-4xl font-bold">$123,456</p>
+<p class="text-accent-green text-base font-medium">+15.3%</p>
+</div>
+</div>
+<div class="rounded-xl p-6 glassmorphism-card">
+<div class="flex flex-wrap items-center justify-between gap-4 mb-4">
+<div>
+<p class="text-light-gray text-xl font-bold">Tendencia de Ventas</p>
+<p class="text-light-gray/80 text-sm">Rendimiento de los últimos 30 días</p>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-3 py-1 text-sm rounded-md text-light-gray bg-light-gray/10 hover:bg-light-gray/20 transition-colors">Últimos 7 días</button>
+<button class="px-3 py-1 text-sm rounded-md text-dark-bg bg-primary font-semibold">Último mes</button>
+<button class="px-3 py-1 text-sm rounded-md text-light-gray bg-light-gray/10 hover:bg-light-gray/20 transition-colors">Último año</button>
+</div>
+</div>
+<div class="h-80">
+<svg fill="none" height="100%" preserveAspectRatio="none" viewBox="0 0 500 200" width="100%" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="5%" stop-color="#592EF2" stop-opacity="0.4"></stop>
+<stop offset="95%" stop-color="#592EF2" stop-opacity="0"></stop>
+</linearGradient>
+</defs>
+<path d="M0 150 C 41.66 100, 83.33 50, 125 75 S 208.33 175, 250 150 S 333.33 50, 375 75 S 458.33 150, 500 125 L 500 200 L 0 200 Z" fill="url(#chartGradient)"></path>
+<path d="M0 150 C 41.66 100, 83.33 50, 125 75 S 208.33 175, 250 150 S 333.33 50, 375 75 S 458.33 150, 500 125" stroke="#592EF2" stroke-linecap="round" stroke-width="3"></path>
+</svg>
+</div>
+</div>
+</main>
+</div>
+</div>
+
+</body></html>

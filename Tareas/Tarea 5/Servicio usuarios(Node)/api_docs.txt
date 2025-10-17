@@ -1,0 +1,46 @@
+# Documentación de la API del Servicio de Usuarios
+
+## Registrar un nuevo usuario
+
+- **Método:** `POST`
+- **URL:** `/register`
+- **Descripción:** Registra un nuevo usuario en el sistema.
+- **JSON de ejemplo:**
+  ```json
+  {
+      "username": "nuevo_usuario",
+      "password": "su_contraseña"
+  }
+  ```
+- **Respuesta exitosa (Código 201):**
+  ```
+  User registered successfully
+  ```
+- **Respuesta de error (Código 400):**
+  - Si el usuario ya existe: `User already exists`
+  - Si faltan campos: `Username and password are required`
+
+---
+
+## Autenticar un usuario (Login)
+
+- **Método:** `POST`
+- **URL:** `/login`
+- **Descripción:** Autentica un usuario y devuelve un token JWT.
+- **JSON de ejemplo:**
+  ```json
+  {
+      "username": "admin",
+      "password": "admin"
+  }
+  ```
+- **Respuesta exitosa (Código 200):**
+  ```json
+  {
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+  }
+  ```
+- **Respuesta de error (Código 401):**
+  ```
+  Invalid credentials
+  ```

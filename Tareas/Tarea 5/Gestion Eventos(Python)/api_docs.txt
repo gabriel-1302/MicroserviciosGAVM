@@ -1,0 +1,69 @@
+# Documentación de la API del Servicio de Eventos
+
+## Autenticación
+
+Todas las peticiones a esta API requieren un token de autenticación JWT (obtenido del Servicio de Usuarios).
+El token debe ser enviado en la cabecera `Authorization` con el formato `Bearer <token>`.
+
+---
+
+## Endpoints de Eventos (`/api/events/`)
+
+### 1. Listar Eventos
+
+- **Método:** `GET`
+- **URL:** `/api/events/`
+- **Permisos:** Cualquier usuario autenticado.
+- **Descripción:** Devuelve una lista de todos los eventos.
+
+### 2. Ver un Evento específico
+
+- **Método:** `GET`
+- **URL:** `/api/events/{id}/`
+- **Permisos:** Cualquier usuario autenticado.
+- **Descripción:** Devuelve los detalles de un evento específico por su ID.
+
+### 3. Crear un Evento
+
+- **Método:** `POST`
+- **URL:** `/api/events/`
+- **Permisos:** Solo administradores (`role: 'admin'` en el token).
+- **Descripción:** Crea un nuevo evento.
+- **JSON de ejemplo:**
+  ```json
+  {
+      "name": "Concierto de Rock",
+      "date": "2025-12-25",
+      "location": "Estadio Principal",
+      "capacity": 5000,
+      "price": 75.50
+  }
+  ```
+
+### 4. Actualizar un Evento (Completo)
+
+- **Método:** `PUT`
+- **URL:** `/api/events/{id}/`
+- **Permisos:** Solo administradores.
+- **Descripción:** Actualiza todos los campos de un evento existente.
+- **JSON de ejemplo:** (Igual que en el POST)
+
+### 5. Actualizar un Evento (Parcial)
+
+- **Método:** `PATCH`
+- **URL:** `/api/events/{id}/`
+- **Permisos:** Solo administradores.
+- **Descripción:** Actualiza uno o más campos de un evento existente.
+- **JSON de ejemplo:**
+  ```json
+  {
+      "price": 80.00
+  }
+  ```
+
+### 6. Eliminar un Evento
+
+- **Método:** `DELETE`
+- **URL:** `/api/events/{id}/`
+- **Permisos:** Solo administradores.
+- **Descripción:** Elimina un evento existente.

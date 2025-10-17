@@ -1,0 +1,71 @@
+# Documentación de la API del Servicio de Compras
+
+## Autenticación
+
+Todas las peticiones a esta API requieren un token de autenticación JWT (obtenido del Servicio de Usuarios).
+El token debe ser enviado en la cabecera `Authorization` con el formato `Bearer <token>`.
+
+---
+
+## Endpoints
+
+### 1. Obtener Lista de Eventos
+
+- **Método:** `GET`
+- **URL:** `/api/events`
+- **Permisos:** Cualquier usuario autenticado.
+- **Descripción:** Obtiene la lista de eventos disponibles directamente desde el "Servicio de Eventos". Este endpoint actúa como un proxy, por lo que el servicio de Python debe estar en ejecución.
+
+### 2. Realizar una Compra
+
+- **Método:** `POST`
+- **URL:** `/api/comprar`
+- **Permisos:** Cualquier usuario autenticado.
+- **Descripción:** Registra una nueva compra con estado "pendiente".
+- **JSON de ejemplo:**
+  ```json
+  {
+      "event_id": 1,
+      "quantity": 2
+  }
+  ```
+- **Respuesta exitosa (Código 201):**
+  ```json
+  {
+      "ID": 1,
+      "CreatedAt": "...",
+      "UpdatedAt": "...",
+      "DeletedAt": null,
+      "event_id": 1,
+      "user_id": 2,
+      "quantity": 2,
+      "status": "pendiente"
+  }
+  ```
+
+### 3. Simular Pago de una Compra
+
+- **Método:** `POST`
+- **URL:** `/api/pagar/{id}`
+- **Permisos:** Cualquier usuario autenticado.
+- **Descripción:** Cambia el estado de una compra a "pagada". El `{id}` en la URL corresponde al ID de la compra (el `ID` que se obtiene en la respuesta al crear la compra).
+- **Respuesta exitosa (Código 200):**
+  ```json
+  {
+      "ID": 1,
+      "CreatedAt": "...",
+      "UpdatedAt": "...",
+      "DeletedAt": null,
+      "event_id": 1,
+      "user_id": 2,
+      "quantity": 2,
+      "status": "pagada"
+  }
+  ```
+
+### 4. Listar Todas las Compras (Solo Admin)
+
+- **Método:** `GET`
+- **URL:** `/api/compras`
+- **Permisos:** Solo administradores (`role: 'admin'` en el token).
+- **Descripción:** Devuelve una lista de todas las compras realizadas en el sistema.
