@@ -1,0 +1,39 @@
+
+mutation CrearUnEnvio {
+  crearEnvio(input: {
+    usuario_id: 1,
+    vehiculo_id: "60d5ec49a3e3a4a8a0e3b8a3",
+    origen: "Almacén Central",
+    destino: "Sucursal Oeste",
+    estado: "pendiente"
+  }) {
+    # Aquí defines qué campos quieres que te devuelva la API tras la creación
+    id
+    origen
+    destino
+    estado
+    fecha_envio
+  }
+}
+
+
+mutation ActualizarUnEnvio {
+  actualizarEnvio(id: "ID_DEL_ENVIO_A_ACTUALIZAR", input: {
+    usuario_id: 1,
+    vehiculo_id: "60d5ec49a3e3a4a8a0e3b8a4",
+    origen: "Almacén Central (Actualizado)",
+    destino: "Sucursal Este (Actualizado)",
+    estado: "en transito"
+  }) {
+    # Pide los campos que quieres ver del objeto actualizado
+    id
+    origen
+    destino
+    estado
+  }
+}
+
+
+mutation EliminarUnEnvio {
+  eliminarEnvio(id: "ID_DEL_ENVIO_A_ELIMINAR")
+}

@@ -1,0 +1,32 @@
+
+
+query ListarTodosLosEnvios {
+  envios {
+    id
+    usuario_id
+    vehiculo_id
+    origen
+    destino
+    fecha_envio
+    estado
+  }
+}
+
+
+query ObtenerUnEnvio {
+  envio(id: "ID_DEL_ENVIO") {
+    id
+    origen
+    destino
+    estado
+  }
+}
+
+# --- Ejemplo de una query más selectiva ---
+# Pide únicamente el origen y el estado de todos los envíos.
+query ListarOrigenYEstado {
+    envios {
+        origen
+        estado
+    }
+}
